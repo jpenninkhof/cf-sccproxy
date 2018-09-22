@@ -1,0 +1,10 @@
+applications:
+- name: cf-sccproxy
+  memory: 16M
+  disk_quota: 16M
+  instances: 1
+  env:
+     GOPACKAGENAME: cf-sccproxy
+  services:
+  - oncemore_Development_BMSAE
+  - oncemore_Development_sneQo

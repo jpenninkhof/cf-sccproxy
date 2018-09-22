@@ -1,0 +1,19 @@
+[[constraint]]
+  branch = "master"
+  name = "code.cloudfoundry.org/clock"
+
+[[constraint]]
+  name = "code.cloudfoundry.org/lager"
+  version = "1.1.0"
+
+[[constraint]]
+  branch = "master"
+  name = "code.cloudfoundry.org/uaa-go-client"
+
+[[constraint]]
+  name = "github.com/cloudfoundry-community/go-cfenv"
+  version = "1.17.0"
+
+[prune]
+  go-tests = true
+  unused-packages = true
