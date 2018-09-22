@@ -87,9 +87,9 @@ func HelloServer(w http.ResponseWriter, req *http.Request) {
 
 	// Calling the service and returning the response
 	url, err := url.Parse(ServiceUrl + req.URL.Path)
-  if err != nil {
+	if err != nil {
 		fmt.Fprintln(w, "Error: ", err)
-  } else {
+	} else {
 		request, err := http.NewRequest("GET", url.String(), nil)
 		if err != nil {
 			fmt.Fprintln(w, "Error: ", err)
@@ -111,7 +111,7 @@ func HelloServer(w http.ResponseWriter, req *http.Request) {
 				fmt.Fprintln(w, string(data))
 			}
 		}
-  }
+	}
 }
 
 func main() {
