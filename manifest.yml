@@ -6,5 +6,5 @@ applications:
   env:
      GOPACKAGENAME: cf-sccproxy
   services:
-  - oncemore_Development_BMSAE
-  - oncemore_Development_sneQo
+  - connectivity-service
+  - xsuaa-service

@@ -20,8 +20,10 @@ import (
 
 const (
 	// DefaultPort is the port in which to listen if there is no PORT declared
-	ServiceUrl = "http://www.google.com/sap/opu/odata/sap/SERVICE_SRV"
+	ServiceUrl = "http://hostname:port/sap/opu/odata/sap/service_SRV"
 	ServiceAuth = "Basic VXNlcjpQYXNzd29yZA=="
+	ConnectityService = "connecvitity-service"
+	XsuaaService = "xsuaa-service"
 	DefaultPort = "9000"
 )
 
@@ -41,7 +43,7 @@ func HelloServer(w http.ResponseWriter, req *http.Request) {
 		appEnv, _ := cfenv.Current()
 
 		// Check for connectivity service
-		connectivity, err := appEnv.Services.WithName("oncemore_Development_BMSAE")
+		connectivity, err := appEnv.Services.WithName(ConnectityService)
 		if err != nil {
 			fmt.Fprintln(w, "\nConnectivity: false")
 		} else {
@@ -49,7 +51,7 @@ func HelloServer(w http.ResponseWriter, req *http.Request) {
 		}
 
 		// Check for XSUAA and generate a proxy credentials
-		xsuaa, err := appEnv.Services.WithName("oncemore_Development_sneQo")
+		xsuaa, err := appEnv.Services.WithName(XsuaaService)
 		if err != nil {
 			fmt.Fprintln(w, "\nXSUAA: false")
 		}
@@ -86,7 +88,7 @@ func HelloServer(w http.ResponseWriter, req *http.Request) {
 	}
 
 	// Calling the service and returning the response
-	url, err := url.Parse(ServiceUrl + req.URL.Path)
+	url, err := url.Parse(ServiceUrl + req.URL.Path + "?" + req.URL.RawQuery)
 	if err != nil {
 		fmt.Fprintln(w, "Error: ", err)
 	} else {
